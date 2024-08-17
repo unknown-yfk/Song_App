@@ -29,7 +29,7 @@ function* fetchSongs(action: ReturnType<typeof fetchSongsRequest>) {
   try {
     const params = action.payload.genre ? { genre: action.payload.genre } : {};
 
-    const response: AxiosResponse = yield call(axios.get, 'http://localhost:5000/api/songs', { params });
+    const response: AxiosResponse = yield call(axios.get, 'https://song-app-3.onrender.com/api/songs', { params });
     console.log('Fetched songs:', response.data); // Log response data
     const mappedSongs = mapSongs(response.data);
 
@@ -41,7 +41,7 @@ function* fetchSongs(action: ReturnType<typeof fetchSongsRequest>) {
 
 function* addSong(action: ReturnType<typeof addSongRequest>) {
   try {
-    const response: AxiosResponse = yield call(axios.post, 'http://localhost:5000/api/songs', action.payload);
+    const response: AxiosResponse = yield call(axios.post, 'https://song-app-3.onrender.com/api/songs', action.payload);
     const newSong = { ...response.data, id: response.data._id }; // Map _id to id
     yield put(addSongSuccess(newSong));
   } catch (error) {
@@ -51,7 +51,7 @@ function* addSong(action: ReturnType<typeof addSongRequest>) {
 
 // function* updateSong(action: ReturnType<typeof updateSongRequest>) {
 //   try {
-//     const response: AxiosResponse = yield call(axios.put, `http://localhost:5000/api/songs/${action.payload.id}`, action.payload);
+//     const response: AxiosResponse = yield call(axios.put, `https://song-app-3.onrender.com/api/songs/${action.payload.id}`, action.payload);
 //     yield put(updateSongSuccess(response.data));
 //   } catch (error) {
 //     yield put(fetchSongsFailure());
@@ -60,7 +60,7 @@ function* addSong(action: ReturnType<typeof addSongRequest>) {
 
 function* updateSong(action: ReturnType<typeof updateSongRequest>) {
   try {
-    const response: AxiosResponse = yield call(axios.put, `http://localhost:5000/api/songs/${action.payload.id}`, action.payload);
+    const response: AxiosResponse = yield call(axios.put, `https://song-app-3.onrender.com/api/songs/${action.payload.id}`, action.payload);
     
     if (response.status === 200) { // Ensure a successful response
       yield put(updateSongSuccess(response.data));
@@ -87,7 +87,7 @@ function* updateSong(action: ReturnType<typeof updateSongRequest>) {
 
 function* deleteSong(action: ReturnType<typeof deleteSongRequest>) {
   try {
-    yield call(axios.delete, `http://localhost:5000/api/songs/${action.payload}`);
+    yield call(axios.delete, `https://song-app-3.onrender.com/api/songs/${action.payload}`);
     yield put(deleteSongSuccess(action.payload));
   } catch (error) {
     yield put(fetchSongsFailure());
@@ -96,7 +96,7 @@ function* deleteSong(action: ReturnType<typeof deleteSongRequest>) {
 
 function* fetchStats() {
   try {
-    const response: AxiosResponse = yield call(axios.get, 'http://localhost:5000/api/stats');
+    const response: AxiosResponse = yield call(axios.get, 'https://song-app-3.onrender.com/api/stats');
     yield put(fetchStatsSuccess(response.data));
   } catch (error) {
     yield put(fetchStatsFailure());
