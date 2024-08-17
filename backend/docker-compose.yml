@@ -1,0 +1,22 @@
+# docker-compose.yml
+version: '3'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb+srv://fkt2119:NvlXNKvHmKM514Ex@cluster0.dsmfb.mongodb.net/
+    volumes:
+      - .:/app
+    command: npm start
+
+volumes:
+  mongo_data:
