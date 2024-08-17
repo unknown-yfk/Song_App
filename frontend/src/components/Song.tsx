@@ -14,14 +14,9 @@ const dashboardStyle = css`
 
 const Song: React.FC = () => (
   <Box>
-    {/* <Sidebar /> */}
     <AppHeader />
     <Box css={dashboardStyle}>
-      {/* Main content here */}
-      {/* <FilterComponent />
-       <SongList />
-       <StatsDisplay /> */}
-      {/* <StatsDisplay /> */}
+  
       <SongList />
     </Box>
   </Box>
