@@ -62,24 +62,6 @@ const deleteSong = async (req, res) => {
 };
 
 
-// const getStatistics = async (req, res) => {
-//     try {
-//         const totalSongs = await Song.countDocuments();
-//         const genres = await Song.aggregate([
-//             { $group: { _id: '$genre', count: { $sum: 1 } } }
-//         ]);
-//         const artists = await Song.aggregate([
-//             { $group: { _id: '$artist', songsCount: { $sum: 1 }, albums: { $addToSet: '$album' } } },
-//             { $project: { _id: 1, songsCount: 1, albumsCount: { $size: '$albums' } } }
-//         ]);
-//         const albums = await Song.aggregate([
-//             { $group: { _id: '$album', count: { $sum: 1 } } }
-//         ]);
-//         res.status(200).json({ totalSongs, genres, artists, albums });
-//     } catch (err) {
-//         res.status(500).json({ message: err.message });
-//     }
-// };
 
 
 const getStatistics = async (req, res) => {
