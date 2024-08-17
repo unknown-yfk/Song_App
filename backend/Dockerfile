@@ -19,5 +19,4 @@ COPY ../src ./src
 EXPOSE 5000
 
 # 7. Define the command to run the application
-# CMD ["npm", "start"]
-CMD ["bash", "-c", "ls -la /app && node /app/server.js"]
+CMD ["npm", "start"]
